@@ -1,3 +1,5 @@
+import pygame
+
 #frames per second
 CLOCK = pygame.time.Clock()
 FPS = 60

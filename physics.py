@@ -1,6 +1,12 @@
 from cmath import rect
+# Sound & Music PyGame Class
+from pygame import mixer
 import pygame
 pygame.init()
+# Mixer needs to be called - do not remove!
+mixer.init()
+
+
 
 win = pygame.display.set_mode((500,500))
 pygame.display.set_caption("First Game")

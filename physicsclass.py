@@ -6,6 +6,7 @@ pygame.init()
 # mixer.init()
 mixer.music.load('sound\english_bckgnd_lofi.wav')
 mixer.music.play(-1)
+
 win = pygame.display.set_mode((500,500))
 pygame.display.set_caption("First Game")
 

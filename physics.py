@@ -4,8 +4,9 @@ from pygame import mixer
 import pygame
 pygame.init()
 # Mixer needs to be called - do not remove!
-mixer.init()
-
+# mixer.init()
+mixer.music.load('sound\english_bckgnd_lofi.wav')
+mixer.music.play(-1)
 
 
 win = pygame.display.set_mode((500,500))

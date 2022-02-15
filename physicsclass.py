@@ -2,8 +2,8 @@ from cmath import rect
 from pygame import mixer
 import pygame
 pygame.init()
-# Mixer needs to be called - do not remove!
-# mixer.init()
+# Mixer needs to be called for sound
+mixer.init()
 mixer.music.load('sound\english_bckgnd_lofi.wav')
 mixer.music.play(-1)
 

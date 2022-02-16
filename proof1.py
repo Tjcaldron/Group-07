@@ -1,6 +1,11 @@
 from cmath import rect
+from pygame import mixer
 import pygame
 pygame.init()
+# Mixer needs to be called for sound
+mixer.init()
+mixer.music.load('sound\english_bckgnd_lofi.wav')
+mixer.music.play(-1)
 
 win = pygame.display.set_mode((1520,680))
 pygame.display.set_caption("First Game")
@@ -18,9 +23,9 @@ class physics():
         self.jump = 0
         self.m = 2
         self.s = 10
-        self.bg1 = pygame.image.load('assets\graphics\Background.png')
+        self.bg1 = pygame.image.load('assets\graphics/Background.png')
         self.bg = pygame.transform.scale(self.bg1, (1520,680))
-        self.char1 = pygame.image.load('assets\graphics\Girl Final.png')
+        self.char1 = pygame.image.load('assets\graphics/Girl Final.png')
         self.char = pygame.transform.scale(self.char1, (50,80))
     def jumpu(self):
         self.jump = 1

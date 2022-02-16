@@ -1,10 +1,15 @@
 from cmath import rect
+from pygame import mixer
 import pygame
 pygame.init()
 
 win = pygame.display.set_mode((1520,680))
 pygame.display.set_caption("First Game")
-
+# pygame.init()
+# # Mixer needs to be called for sound
+# # mixer.init()
+# mixer.music.load('sound\english_bckgnd_lofi.wav')
+# mixer.music.play(-1)
 
 class physics():
     on_ground = True
@@ -80,10 +85,6 @@ class physics():
             self.redrawGameWindow()
     
         pygame.quit()
-
-
-
-
 
 
 def main():

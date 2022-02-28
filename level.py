@@ -29,7 +29,7 @@ class Level:
                 if cell == 'O':
                     x = col_index * tile_size
                     y = row_index * tile_size
-                    power_up = Power_Up
+                    power_up = Power_Up((x,y), 30)
             
 
     def run(self):

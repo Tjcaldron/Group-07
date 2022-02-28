@@ -1,9 +1,13 @@
 import pygame
+from pygame import mixer
 from pygame.locals import *
 import sys
 import random
 import time
-
+# CAll MIXER to play background WAV 
+mixer.init()
+mixer.music.load('sound\english_bckgnd_lofi.wav')
+mixer.music.play(-1)
  
 pygame.init()
 vec = pygame.math.Vector2 #2 for two dimensional

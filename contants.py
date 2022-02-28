@@ -1,4 +1,7 @@
 import pygame
+from pygame import mixer
+# Mixer needs to be called for sound
+mixer.init()
 
 #frames per second
 CLOCK = pygame.time.Clock()

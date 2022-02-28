@@ -1,10 +1,15 @@
+import pygame
 from cmath import rect
 from pygame import mixer
-import pygame
+# from playlist import Playlist
+
 pygame.init()
 # Mixer needs to be called for sound
 mixer.init()
-mixer.music.load('sound\english_bckgnd_lofi.wav')
+# music = Playlist(Sounds.self.eng_playlist)
+# math_bckgnd_music=
+mixer.music.load("sound\math_bckgnd_classical.wav")
+# play_math
 mixer.music.play(-1)
 
 win = pygame.display.set_mode((1520,680))

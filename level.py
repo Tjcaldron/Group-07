@@ -1,7 +1,9 @@
 import pygame
+from power_up import Power_Up
 from tiles import Tile
 from settings import tile_size
 from player import Player
+from power_up import Power_Up
 
 class Level:
     def __init__(self,level_data, surface):
@@ -24,6 +26,10 @@ class Level:
                     y = row_index * tile_size
                     player_sprite = Player((x,y))
                     self.player.add(player_sprite)
+                if cell == 'O':
+                    x = col_index * tile_size
+                    y = row_index * tile_size
+                    power_up = Power_Up((x,y), 30)
             
 
     def run(self):

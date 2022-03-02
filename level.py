@@ -3,7 +3,6 @@ from power_up import Power_Up
 from tiles import Tile
 from settings import tile_size
 from player import Player
-from power_up import Power_Up
 
 class Level:
     def __init__(self,level_data, surface):

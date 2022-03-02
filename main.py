@@ -1,6 +1,6 @@
 import pygame, sys
 from settings import *
-# from level import Level
+from level import Level
 # from game_data import level_0
 from pygame import mixer
 pygame.init()

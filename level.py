@@ -7,7 +7,7 @@ class Level:
     def __init__(self,level_data, surface):
         self.display_surface = surface
         self.setup_level(level_data)
-        self.world_shift = 0
+        # self.world_shift = 0
         # self.bg1 = pygame.image.load('assetsgraphics/background.png')
 
     def setup_level(self,layout):
@@ -35,8 +35,10 @@ class Level:
             if sprite.rect.colliderect(player.rect):
                 if player.direction.x < 0:
                     player.rect.left = sprite.rect.right
+                    player.direction.x = 0
                 elif player.direction.x > 0:
                     player.rect.left = sprite.rect.left
+                    player.direction.x = 0
 
     def virtical_movment_collision(self):
         player = self.player.sprite
@@ -52,7 +54,7 @@ class Level:
                     player.direction.y = 0
 
     def run(self):
-        self.tiles.update(self.world_shift)
+        # self.tiles.update(self.world_shift)
         self.tiles.draw(self.display_surface)
 
         self.player.update()

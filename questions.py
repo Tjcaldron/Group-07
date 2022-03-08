@@ -3,11 +3,12 @@ from level import Level
 from player import Player
 import json
 import random
+from settings import screen_width, screen_height
 
 class Quesion_Event:
 	def __init__(self, level, player):
 		question = self.pull_question()
-		vecotrs = self.get_and_stop_movement(level, player)
+		vectors = self.get_and_stop_movement(level, player)
 		
 
 	def pull_question():
@@ -28,3 +29,8 @@ class Quesion_Event:
 
 		return (world_shift, speed, gravity, jump_speed)
 
+	def create_text_box():
+		width_fourth = screen_width / 4
+		height_tenth = screen_height / 10
+
+		

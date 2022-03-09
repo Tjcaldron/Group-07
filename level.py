@@ -8,8 +8,8 @@ class Level:
     def __init__(self,level_data, surface):
         self.display_surface = surface
         self.setup_level(level_data)
-        # self.world_shift = 0
-        # self.bg1 = pygame.image.load('assetsgraphics/background.png')
+        self.world_shift = 0
+        self.bg1 = pygame.image.load('assets/graphics/background.png')
 
     def setup_level(self,layout):
         self.tiles = pygame.sprite.Group()

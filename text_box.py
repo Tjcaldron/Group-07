@@ -28,11 +28,11 @@ class Text_Box(pygame.sprite.Sprite):
 
 		text1 = self.font.render(answers[1], True, (0, 0, 0))
 		text1_rect = text1.get_rect()
-		text1_rect.topleft = ((pos_x + self.size) / 2, pos_y)
+		text1_rect.topleft = ((pos_x + self.size[0]) / 2, pos_y)
 
 		text2 = self.font.render(answers[2], True, (0, 0, 0))
 		text2_rect = text2.get_rect()
-		text2_rect.topleft = (pos_x + self.size, pos_y)
+		text2_rect.topleft = (pos_x + self.size[0], pos_y)
 
 		return ((text0, text0_rect), (text1, text1_rect), (text2, text2_rect))
 

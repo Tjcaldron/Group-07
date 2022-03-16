@@ -1,6 +1,7 @@
 import pygame
 from level import Level
 from player import Player
+from text_box import Text_Box
 import json
 import random
 from settings import screen_width, screen_height
@@ -29,8 +30,13 @@ class Quesion_Event:
 
 		return (world_shift, speed, gravity, jump_speed)
 
-	def create_text_box():
+	def create_text_box(self):
 		width_fourth = screen_width / 4
 		height_tenth = screen_height / 10
+
+		box = Text_Box((width_fourth, height_tenth * 6), (width_fourth * 2, height_tenth * 3),self.question)
+		
+
+
 
 		

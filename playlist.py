@@ -1,9 +1,8 @@
-from os import walk
-import pygame
-# Mixer needs to be called for sound
-# mixer.init()
-# # mixer.music.load("sound\english_bckgnd_lofi.wav")
-# mixer.music.play(-1)    
+from pygame import mixer
+# Initialize pygame
+# pygame.init()
+mixer.init()
+
 def import_playlist(path):
     """
     Test code implementation for audio...might need to be it's own
@@ -23,3 +22,11 @@ def import_playlist(path):
             
         return music_playlist
     pass
+
+
+"""
+Put sounds in array
+
+
+pass array in level.run
+"""

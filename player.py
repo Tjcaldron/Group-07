@@ -66,6 +66,7 @@ class Player(pygame.sprite.Sprite):
         if keys[pygame.K_RIGHT]:
             self.direction.x = 1
             self.facing_right = True
+            #jump.play() -- add sound Class call here ---Alma 
         elif keys[pygame.K_LEFT]:
             self.direction.x = -1
             self.facing_right = False

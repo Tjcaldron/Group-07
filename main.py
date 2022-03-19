@@ -4,6 +4,7 @@ from level import Level
 from sound import Sound
 
 
+
 pygame.init()
 screen_width = 1200
 screen_height = 700

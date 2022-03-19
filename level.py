@@ -1,7 +1,9 @@
 import pygame
+from power_up import Power_Up
 from tiles import Tile
 from settings import tile_size, screen_width
 from player import Player
+from text_box import Text_Box
 
 class Level:
     def __init__(self,level_data, surface):
@@ -13,6 +15,8 @@ class Level:
     def setup_level(self,layout):
         self.tiles = pygame.sprite.Group()
         self.player = pygame.sprite.GroupSingle()
+        self.power_ups = pygame.sprite.Group()
+        self.text_boxes = pygame.sprite.GroupSingle()
         for row_index, row in enumerate(layout):
             for col_index, cell in enumerate(row):
                 if cell == 'X':
@@ -25,6 +29,11 @@ class Level:
                     y = row_index * tile_size
                     player_sprite = Player((x,y))
                     self.player.add(player_sprite)
+                if cell == 'O':
+                    x = col_index * tile_size
+                    y = row_index * tile_size
+                    power_up = Power_Up((x,y), tile_size)
+                    self.power_ups.add(power_up)
             
     def scrol_x(self):
         player = self.player.sprite
@@ -57,6 +66,11 @@ class Level:
                     player.on_right = True
                     self.current_x = player.rect.right
 
+        for sprite in self.power_ups.sprites():
+            if sprite.rect.colliderect(player.rect):
+                text_box = Text_Box((10,10), (800,500), "cool beans")
+                self.text_boxes.add(text_box)
+
         if player.on_left and (player.rect.left < self.current_x or player.direction.x >= 0):
             player.on_left = False
         if player.on_right and (player.rect.right > self.current_x or player.direction.x <= 0):
@@ -81,6 +95,12 @@ class Level:
         if player.on_ceiling and player.direction.y > 0:
             player.on_ceiling = False
 
+        for sprite in self.power_ups.sprites():
+            if sprite.rect.colliderect(player.rect):
+                text_box = Text_Box((10,10), (800,500), "cool beans")
+                self.text_boxes.add(text_box)
+
+
     def run(self):
         self.tiles.update(self.world_shift)
         self.tiles.draw(self.display_surface)
@@ -90,4 +110,8 @@ class Level:
         self.virtical_movment_collision()
         self.player.draw(self.display_surface)
         self.scrol_x()
+
+        self.power_ups.update(self.world_shift)
+        self.power_ups.draw(self.display_surface)
         
+        self.text_boxes.draw(self.display_surface)

@@ -1,6 +1,7 @@
 import pygame, sys
 from settings import *
 from level import Level
+from sound import Sound
 
 
 pygame.init()
@@ -10,6 +11,7 @@ win = pygame.display.set_mode((1200,700))
 screen = pygame.display.set_mode((screen_width,screen_height))
 clock = pygame.time.Clock()
 level = Level(level_map, screen)
+sound = Sound()
 bg1 = pygame.image.load('assets/graphics/background.png')
 bg = pygame.transform.scale(bg1, (1200,700))
 
@@ -21,6 +23,7 @@ while True:
             sys.exit()
     win.blit(bg, (0,0))
     # screen.fill('black')
+    sound.play_music()
     level.run()
 
 

@@ -6,13 +6,16 @@ class Text_Box(pygame.sprite.Sprite):
 		self.image = pygame.Surface((size[0],size[1]))
 		self.image.fill('white')
 		self.rect = self.image.get_rect(topleft = pos)
-		self.font = pygame.font.Font("ocraextended.ttf", 30)
+		self.font = pygame.font.SysFont("ocraextended", 30)
 		
 		question = self.get_question("What is 2 + 2?", pos[0] + 10, pos[1] + 10)
-		self.image.blit(question)
+		self.image.blit(question[0], question[1])
 
-		answers = self.get_answers("A. 1-B. 2-C. 4", pos[0] + 100, pos[1] + 10)
-		self.image.blit(answers[0], answers[1], answers[2])
+		answers = self.get_answers("A. 1-B. 2-C. 4", pos[0] + 10, pos[1] + 200)
+		self.image.blit(answers[0][0], answers[0][1])
+		self.image.blit(answers[1][0], answers[1][1])
+		self.image.blit(answers[2][0], answers[2][1])
+
 
 	def get_question(self, msg, pos_x, pos_y):
 		text = self.font.render(msg, True, (0, 0, 0))
@@ -28,11 +31,11 @@ class Text_Box(pygame.sprite.Sprite):
 
 		text1 = self.font.render(answers[1], True, (0, 0, 0))
 		text1_rect = text1.get_rect()
-		text1_rect.topleft = ((pos_x + self.size[0]) / 2, pos_y)
+		text1_rect.topleft = ((pos_x + 250), pos_y)
 
 		text2 = self.font.render(answers[2], True, (0, 0, 0))
 		text2_rect = text2.get_rect()
-		text2_rect.topleft = (pos_x + self.size[0], pos_y)
+		text2_rect.topleft = (pos_x + 450, pos_y)
 
 		return ((text0, text0_rect), (text1, text1_rect), (text2, text2_rect))
 

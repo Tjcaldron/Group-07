@@ -62,7 +62,7 @@ class Level:
                     player.on_left = True
                     self.current_x = player.rect.left
                 elif player.direction.x > 0:
-                    player.rect.left = sprite.rect.left
+                    player.rect.right = sprite.rect.left
                     player.on_right = True
                     self.current_x = player.rect.right
 

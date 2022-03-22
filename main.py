@@ -1,8 +1,6 @@
 import pygame, sys
 from settings import *
 from level import Level
-from pygame import mixer
-mixer.init()
 
 pygame.init()
 screen_width = 1200

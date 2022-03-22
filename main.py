@@ -23,7 +23,6 @@ while True:
             pygame.quit()
             sys.exit()
     win.blit(bg, (0,0))
-    # screen.fill('black')
     sound.play_music()
     level.run()
 

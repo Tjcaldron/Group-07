@@ -4,6 +4,7 @@ from tiles import Tile
 from settings import tile_size, screen_width
 from player import Player
 from text_box import Text_Box
+from questions import Quesion_Event
 
 class Level:
     def __init__(self,level_data, surface):
@@ -17,6 +18,8 @@ class Level:
         self.player = pygame.sprite.GroupSingle()
         self.power_ups = pygame.sprite.Group()
         self.text_boxes = pygame.sprite.GroupSingle()
+        # self.boss = pygame.sprite.GroupSingle()
+        # self.fire_balls = pygame.sprite.GroupSingle()
         for row_index, row in enumerate(layout):
             for col_index, cell in enumerate(row):
                 if cell == 'X':
@@ -68,6 +71,7 @@ class Level:
 
         for sprite in self.power_ups.sprites():
             if sprite.rect.colliderect(player.rect):
+                question = Quesion_Event(self, player)
                 text_box = Text_Box((10,10), (800,500), "cool beans")
                 self.text_boxes.add(text_box)
 

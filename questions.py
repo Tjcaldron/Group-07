@@ -10,13 +10,14 @@ class Quesion_Event:
 	def __init__(self, level, player):
 		question = self.pull_question()
 		vectors = self.get_and_stop_movement(level, player)
+		box = self.create_text_box()
 		
 
-	def pull_question():
-		file = open('questions.json')
-		questions = json.load(file)
+	# def pull_question():
+	# 	file = open('questions.json')
+	# 	questions = json.load(file)
 
-		return questions[random(1, len(questions))]
+	# 	return questions[random(1, len(questions))]
 
 	def get_and_stop_movement(level, player):
 		world_shift = level.world_shift
@@ -34,7 +35,8 @@ class Quesion_Event:
 		width_fourth = screen_width / 4
 		height_tenth = screen_height / 10
 
-		box = Text_Box((width_fourth, height_tenth * 6), (width_fourth * 2, height_tenth * 3),self.question)
+		box = Text_Box((width_fourth, height_tenth * 6), (width_fourth * 2, height_tenth * 3),"cool beans")
+		return box
 		
 
 

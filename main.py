@@ -1,7 +1,7 @@
 import pygame, sys
 from settings import *
 from level import Level
-from sound import Sound
+from Sound import Sound
 
 
 

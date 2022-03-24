@@ -1,6 +1,7 @@
 from matplotlib import animation
 from numpy import character
 import pygame
+from Sound import Sound
 from support import import_folder
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos):
@@ -66,14 +67,18 @@ class Player(pygame.sprite.Sprite):
         if keys[pygame.K_RIGHT]:
             self.direction.x = 1
             self.facing_right = True
-            #jump.play() -- add sound Class call here ---Alma 
+            Sound.run.play() #-- sound
         elif keys[pygame.K_LEFT]:
             self.direction.x = -1
             self.facing_right = False
+            Sound.run.play() #-- sound
+            
         else:
             self.direction.x = 0
         if keys[pygame.K_SPACE] and self.on_ground:
             self.jump()
+            Sound.jump.play() #-- sound
+            
 
     def get_status(self):
         if self.direction.y < 0:

@@ -37,27 +37,31 @@ class Quesion_Event:
 		if keys[pygame.K_1]:
 			if self.answer == 1:
 				return True
-			else:
-				return False
 		if keys[pygame.K_2]:
 			if self.answer == 2:
 				return True
-			else:
-				return False
 		if keys[pygame.K_3]:
 			if self.answer == 3:
 				return True
-			else:
+		if keys[pygame.K_1]:
+			if self.answer != 1:
+				return False
+		if keys[pygame.K_2]:
+			if self.answer != 2:
+				return False
+		if keys[pygame.K_3]:
+			if self.answer != 3:
 				return False
 
 	def reset_game(self, player, level):
 		player.input = True
 		player.graviy = 0.8
 
-	def update(self, player, level):
+	def update(self, level, player):
 		if self.get_input():
 			self.function_right(player, level)
 			self.reset_game(player, level)
-		else:
+			level.text_box.remove()
+		elif self.get_input == False:
 			self.function_wrong(player, level)
 			self.reset_game(player, level)

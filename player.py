@@ -1,4 +1,5 @@
 from matplotlib import animation
+from sound import Sound
 from numpy import character
 import pygame
 from support import import_folder

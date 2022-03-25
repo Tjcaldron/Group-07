@@ -17,7 +17,8 @@ class Level:
         self.tiles = pygame.sprite.Group()
         self.player = pygame.sprite.GroupSingle()
         self.power_ups = pygame.sprite.Group()
-        self.text_boxes = pygame.sprite.GroupSingle()
+        self.text_box = pygame.sprite.GroupSingle()
+        self.question = []
         # self.boss = pygame.sprite.GroupSingle()
         # self.fire_balls = pygame.sprite.GroupSingle()
         for row_index, row in enumerate(layout):
@@ -71,9 +72,11 @@ class Level:
 
         for sprite in self.power_ups.sprites():
             if sprite.rect.colliderect(player.rect):
-                question = Quesion_Event(self, player)
-                text_box = Text_Box((10,10), (800,500), "cool beans")
-                self.text_boxes.add(text_box)
+                question = Quesion_Event(self, player, sprite.right, sprite.wrong)
+                del sprite
+                self.question.append(question)
+                text_box = question.create_text_box()
+                self.text_box.add(text_box)
 
         if player.on_left and (player.rect.left < self.current_x or player.direction.x >= 0):
             player.on_left = False
@@ -101,8 +104,11 @@ class Level:
 
         for sprite in self.power_ups.sprites():
             if sprite.rect.colliderect(player.rect):
-                text_box = Text_Box((10,10), (800,500), "cool beans")
-                self.text_boxes.add(text_box)
+                question = Quesion_Event(self, player, sprite.right, sprite.wrong)
+                del sprite
+                self.question.append(question)
+                text_box = question.create_text_box()
+                self.text_box.add(text_box)
 
 
     def run(self):
@@ -118,4 +124,9 @@ class Level:
         self.power_ups.update(self.world_shift)
         self.power_ups.draw(self.display_surface)
         
-        self.text_boxes.draw(self.display_surface)
+        self.text_box.draw(self.display_surface)
+
+        for i in self.question:
+            i.update(self, self.player)
+
+        

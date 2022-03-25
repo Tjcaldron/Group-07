@@ -1,5 +1,4 @@
 import pygame
-from level import Level
 from player import Player
 from text_box import Text_Box
 import json
@@ -7,38 +6,58 @@ import random
 from settings import screen_width, screen_height
 
 class Quesion_Event:
-	def __init__(self, level, player):
-		question = self.pull_question()
-		vectors = self.get_and_stop_movement(level, player)
-		box = self.create_text_box()
+	def __init__(self, level, player, right, wrong):
+		(self.question, self.answers, self.answer) = self.pull_question()
+		self.get_and_stop_movement(player)
+		self.function_right = right
+		self.function_wrong = wrong
 		
+	def pull_question(self):
+		file = open('questions.json')
+		questions = json.load(file)
 
-	# def pull_question():
-	# 	file = open('questions.json')
-	# 	questions = json.load(file)
+		data = questions[str(random.randrange(0, len(questions)))]
+		return (data[0],data[1],data[2])
 
-	# 	return questions[random(1, len(questions))]
-
-	def get_and_stop_movement(level, player):
-		world_shift = level.world_shift
-		level.world_shift = 0
-		speed = player.speed
-		player.speed = 0
-		gravity = player.gravity
-		player.gravity = 0
-		jump_speed = player.jump_speed
-		player.jump_speed = 0
-
-		return (world_shift, speed, gravity, jump_speed)
+	def get_and_stop_movement(self, player):
+		player.input = False
+		player.graviy = 0
+		player.direction.x = 0
 
 	def create_text_box(self):
 		width_fourth = screen_width / 4
 		height_tenth = screen_height / 10
 
-		box = Text_Box((width_fourth, height_tenth * 6), (width_fourth * 2, height_tenth * 3),"cool beans")
+		box = Text_Box((width_fourth, height_tenth * 6), (width_fourth * 2, height_tenth * 3), self.question, self.answers)
 		return box
-		
 
+	def get_input(self):
+		keys = pygame.key.get_pressed()
 
+		if keys[pygame.K_1]:
+			if self.answer == 1:
+				return True
+			else:
+				return False
+		if keys[pygame.K_2]:
+			if self.answer == 2:
+				return True
+			else:
+				return False
+		if keys[pygame.K_3]:
+			if self.answer == 3:
+				return True
+			else:
+				return False
 
-		
+	def reset_game(self, player, level):
+		player.input = True
+		player.graviy = 0.8
+
+	def update(self, player, level):
+		if self.get_input():
+			self.function_right(player, level)
+			self.reset_game(player, level)
+		else:
+			self.function_wrong(player, level)
+			self.reset_game(player, level)

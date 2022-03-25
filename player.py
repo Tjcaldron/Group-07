@@ -24,6 +24,7 @@ class Player(pygame.sprite.Sprite):
         self.on_ceiling = False
         self.on_left = False
         self.on_right = False
+        self.input = True
 
     def import_character_assets(self):
         character_path = 'assetsgraphics/'
@@ -94,7 +95,8 @@ class Player(pygame.sprite.Sprite):
         self.direction.y = self.jump_speed
 
     def update(self):
-        self.get_input()
+        if self.input:
+            self.get_input()
         # self.apply_gravity()
         self.get_status()
         self.animate()

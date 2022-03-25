@@ -1,7 +1,7 @@
 from matplotlib import animation
 from numpy import character
 import pygame
-from Sound import Sound
+from sound import Sound
 from support import import_folder
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos):

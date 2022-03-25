@@ -53,15 +53,17 @@ class Quesion_Event:
 			if self.answer != 3:
 				return False
 
-	def reset_game(self, player, level):
+	def reset_game(self, player):
 		player.input = True
 		player.graviy = 0.8
+		player.direction.x = 8
 
 	def update(self, level, player):
 		if self.get_input():
 			self.function_right(player, level)
-			self.reset_game(player, level)
-			level.text_box.remove()
+			self.reset_game(player)
+			level.text_box.empty()
 		elif self.get_input == False:
 			self.function_wrong(player, level)
 			self.reset_game(player, level)
+			level.text_box.empty()

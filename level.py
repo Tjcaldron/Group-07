@@ -73,7 +73,7 @@ class Level:
         for sprite in self.power_ups.sprites():
             if sprite.rect.colliderect(player.rect):
                 question = Quesion_Event(self, player, sprite.right, sprite.wrong)
-                del sprite
+                pygame.sprite.Sprite.kill(sprite)
                 self.question.append(question)
                 text_box = question.create_text_box()
                 self.text_box.add(text_box)
@@ -105,7 +105,7 @@ class Level:
         for sprite in self.power_ups.sprites():
             if sprite.rect.colliderect(player.rect):
                 question = Quesion_Event(self, player, sprite.right, sprite.wrong)
-                del sprite
+                pygame.sprite.Sprite.kill(sprite)
                 self.question.append(question)
                 text_box = question.create_text_box()
                 self.text_box.add(text_box)
@@ -127,6 +127,6 @@ class Level:
         self.text_box.draw(self.display_surface)
 
         for i in self.question:
-            i.update(self, self.player)
+            i.update(self, self.player.sprite)
 
         

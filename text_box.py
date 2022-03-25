@@ -1,17 +1,17 @@
 import pygame
 
 class Text_Box(pygame.sprite.Sprite):
-	def __init__(self,pos,size,msg):
+	def __init__(self,pos,size,question,answers):
 		super().__init__()
 		self.image = pygame.Surface((size[0],size[1]))
 		self.image.fill('white')
 		self.rect = self.image.get_rect(topleft = pos)
 		self.font = pygame.font.SysFont("ocraextended", 30)
 		
-		question = self.get_question("What is 2 + 2?", pos[0] + 10, pos[1] + 10)
+		question = self.get_question(question, pos[0] + 10, pos[1] + 10)
 		self.image.blit(question[0], question[1])
 
-		answers = self.get_answers("A. 1-B. 2-C. 4", pos[0] + 10, pos[1] + 200)
+		answers = self.get_answers(answers, pos[0] + 10, pos[1] + 200)
 		self.image.blit(answers[0][0], answers[0][1])
 		self.image.blit(answers[1][0], answers[1][1])
 		self.image.blit(answers[2][0], answers[2][1])

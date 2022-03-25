@@ -9,3 +9,6 @@ class Power_Up(pygame.sprite.Sprite):
 
     def update(self,x_shift):
         self.rect.x += x_shift
+
+    def right(question, player, level): {print('life += 1')}
+    def wrong(question, player, level): {print('suck butts noob')}

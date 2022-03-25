@@ -68,6 +68,7 @@ class Player(pygame.sprite.Sprite):
             self.direction.x = 1
             self.facing_right = True
             Sound.run.play() #-- sound
+            
         elif keys[pygame.K_LEFT]:
             self.direction.x = -1
             self.facing_right = False

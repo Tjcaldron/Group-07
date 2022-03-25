@@ -63,7 +63,9 @@ class Quesion_Event:
 			self.function_right(player, level)
 			self.reset_game(player)
 			level.text_box.empty()
-		elif self.get_input == False:
+			level.question.clear()
+		elif self.get_input() == False:
 			self.function_wrong(player, level)
-			self.reset_game(player, level)
+			self.reset_game(player)
 			level.text_box.empty()
+			level.question.clear()

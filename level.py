@@ -73,6 +73,12 @@ class Level:
                     y = row_index * tile_size
                     power_up = Power_Up((x,y), tile_size)
                     self.power_ups.add(power_up)
+                if cell == 'B':
+                    x = col_index * tile_size
+                    y = row_index * tile_size
+                    tile = Tile((x,y), tile_size)
+                    self.tiles.add(tile)
+
             
     def scrol_x(self):
         player = self.player.sprite

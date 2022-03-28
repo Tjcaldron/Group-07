@@ -14,10 +14,13 @@ class Sound():
 
     def play_music(self):
         
-        self.music.play()
+        self.music.play(-1)
         self.jump.play()
         self.run.play()
         
         # mixer.music.play(-1) --- play background infinite -- how to impliment.
+        
+        s = Sound()
+        
         
     

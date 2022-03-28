@@ -1,7 +1,8 @@
+from typing import Text
 import pygame
 from power_up import Power_Up
 from tiles import Tile
-from settings import tile_size, screen_width
+from settings import tile_size, screen_width, screen_height
 from player import Player
 from text_box import Text_Box
 from questions import Quesion_Event

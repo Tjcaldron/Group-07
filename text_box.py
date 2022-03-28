@@ -8,17 +8,17 @@ class Text_Box(pygame.sprite.Sprite):
 		self.rect = self.image.get_rect(topleft = pos)
 		self.font = pygame.font.SysFont("ocraextended", 30)
 		
-		question = self.get_question(question, pos[0] + 10, pos[1] + 10)
-		self.image.blit(question[0], question[1])
+		question_object = self.get_question(question, 20, 10)
+		self.image.blit(question_object[0], question_object[1])
 
-		answers = self.get_answers(answers, pos[0] + 10, pos[1] + 200)
-		self.image.blit(answers[0][0], answers[0][1])
-		self.image.blit(answers[1][0], answers[1][1])
-		self.image.blit(answers[2][0], answers[2][1])
+		answers_object = self.get_answers(answers, 20, 110)
+		self.image.blit(answers_object[0][0], answers_object[0][1])
+		self.image.blit(answers_object[1][0], answers_object[1][1])
+		self.image.blit(answers_object[2][0], answers_object[2][1])
 
 
 	def get_question(self, msg, pos_x, pos_y):
-		text = self.font.render(msg, True, (0, 0, 0))
+		text = self.font.render(msg, True, "black")
 		textRect = text.get_rect()
 		textRect.topleft = (pos_x, pos_y) 
 		return (text, textRect)

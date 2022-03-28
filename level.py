@@ -76,7 +76,7 @@ class Level:
                 if cell == 'B':
                     x = col_index * tile_size
                     y = row_index * tile_size
-                    tile = Tile((x,y), tile_size)
+                    tile = Tile((x,y), tile_size, "assets/graphics/desk1.png")
                     self.tiles.add(tile)
 
             

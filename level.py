@@ -1,5 +1,7 @@
+import enum
 from typing import Text
 import pygame
+from csv import reader
 from power_up import Power_Up
 from tiles import Tile
 from settings import tile_size, screen_width, screen_height
@@ -22,12 +24,44 @@ class Level:
         self.question = []
         # self.boss = pygame.sprite.GroupSingle()
         # self.fire_balls = pygame.sprite.GroupSingle()
+        # file_path_books = "assets/maps/maps/prototype map_books.csv"
+        # file_path_desk = "assets/maps/maps/prototype map_desk.csv"
+
+        # book_map = []
+        # with open(file_path_books) as map:
+        #     level = reader(map, delimiter = ',')
+        #     for row in level:
+        #         book_map.append(list(row))
+
+        # for row_index, row in enumerate(book_map):
+        #     for col_index, val in enumerate(row):
+        #         if val == '0':
+        #             x = col_index * tile_size
+        #             y = row_index * tile_size
+        #             tile = Tile((x,y), tile_size, "assets/graphics/bookpiles.png")
+        #             self.tiles.add(tile)
+
+        
+        # desk_map = []
+        # with open(file_path_desk) as map:
+        #     level = reader(map, delimiter = ',')
+        #     for row in level:
+        #         book_map.append(list(row))
+
+        # for row_index, row in enumerate(desk_map):
+        #     for col_index, val in enumerate(row):
+        #         if val == '0':
+        #             x = col_index * tile_size
+        #             y = row_index * tile_size
+        #             tile = Tile((0,0), tile_size, "assets/graphics/desk.png")
+        #             self.tiles.add(tile)
+
         for row_index, row in enumerate(layout):
             for col_index, cell in enumerate(row):
                 if cell == 'X':
                     x = col_index * tile_size
                     y = row_index * tile_size
-                    tile = Tile((x,y), tile_size)
+                    tile = Tile((x,y), tile_size, "assets/graphics/desk1.png")
                     self.tiles.add(tile)
                 if cell == 'P':
                     x = col_index * tile_size

@@ -122,3 +122,35 @@ class Question_NonEvent:
 			self.function_wrong(player, level)
 			level.text_box.empty()
 			level.question.clear()
+
+class Question_Boss:
+	def __init__(self, level, player, right, wrong):
+		(self.question, self.answers, self.answer) = self.pull_question()
+		self.function_right = right
+		self.function_wrong = wrong
+
+
+	def get_and_stop_movement(self, player):
+		player.input = False
+		player.graviy = 0
+		player.direction.x = 0
+
+	def get_input(self):
+		keys = pygame.key.get_pressed()
+
+		if keys[pygame.K_1]:
+			return True
+		if keys[pygame.K_2]:
+			return True
+		if keys[pygame.K_3]:
+			return True
+
+	def create_text_box(self):
+		width_eighth = screen_width / 8
+		height_tenth = screen_height / 10
+
+		box = Text_Box((width_eighth, height_tenth * 1), (width_eighth * 6, height_tenth * 3), "Go to BOSS Room?", "1. Yes- 2. Oh Yeah!-3. Absolutely!")
+		return box
+
+	def update(self, player, level):
+		print

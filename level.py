@@ -17,6 +17,12 @@ class Level:
         self.world_shift = 0
         self.current_x = 0
 
+    def lives(self):
+        self.font = pygame.font.SysFont('Consolas', 30)
+        self.color = (255,255,0)
+        self.rect1 = pygame.draw.rect(self.display_surface, self.color, pygame.Rect(30, 30, 60, 60))
+        self.rect = self.display_surface.blit(self.font.render(str(self.hearts), True, (0, 0, 0)), (32, 48))
+
     def setup_level(self,layout):
         self.tiles = pygame.sprite.Group()
         self.player = pygame.sprite.GroupSingle()

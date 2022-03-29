@@ -12,5 +12,11 @@ class Power_Up(pygame.sprite.Sprite):
     def update(self,x_shift):
         self.rect.x += x_shift
 
-    def right(question, player, level): {print('life += 1')}
-    def wrong(question, player, level): {print('suck butts noob')}
+
+    def right(question, player, level): 
+        level.hearts += 1
+        level.display_surface.blit(level.font.render(str(level.hearts), True, (0, 0, 0)), (32, 48))
+
+    def wrong(question, player, level): 
+        level.hearts -= 1
+        level.display_surface.blit(level.font.render(str(level.hearts), True, (0, 0, 0)), (32, 48))

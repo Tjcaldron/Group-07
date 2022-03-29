@@ -2,6 +2,7 @@ from matplotlib import animation
 from numpy import character
 import pygame
 from support import import_folder
+from fire_balls import Fire_balls
 
 
 class Boss(pygame.sprite.Sprite):
@@ -16,8 +17,10 @@ class Boss(pygame.sprite.Sprite):
 
         self.move_direction = 1
         self.move_counter = 0
+        self.fire_ball_counter = 1
         self.image.blit(self.image, (x, y))
         self.rect = self.image.get_rect(center=pos)
+        self.health = 5
 
     def move(self):
         if self.vel > 0:
@@ -35,9 +38,56 @@ class Boss(pygame.sprite.Sprite):
                 self.x += self.vel
                 self.walkCount = 0
 
-    def update(self, x_shift):
+    def make_fire_balls(self, level):
+        if self.fire_ball_counter % 300 != 0:
+            self.fire_ball_counter += 1
+
+        elif self.fire_ball_counter == 300:
+            fire_ball_1 = Fire_balls(self.rect.x, self.rect.y, -4, 2)
+            fire_ball_2 = Fire_balls(self.rect.x, self.rect.y, 0, 5)
+            fire_ball_3 = Fire_balls(self.rect.x, self.rect.y, 4, 2)
+            level.fire_balls.add(fire_ball_1)
+            level.fire_balls.add(fire_ball_2)
+            level.fire_balls.add(fire_ball_3)
+            self.fire_ball_counter += 1
+
+        elif self.fire_ball_counter == 600:
+            fire_ball_1 = Fire_balls(self.rect.x, self.rect.y, -2, 0)
+            fire_ball_2 = Fire_balls(self.rect.x, self.rect.y, 0, 2)
+            fire_ball_3 = Fire_balls(self.rect.x, self.rect.y, 2, 0)
+            fire_ball_4 = Fire_balls(self.rect.x, self.rect.y, -1, 1)
+            fire_ball_5 = Fire_balls(self.rect.x, self.rect.y, 0, 4)
+            fire_ball_6 = Fire_balls(self.rect.x, self.rect.y, 1, -1)
+            level.fire_balls.add(fire_ball_1)
+            level.fire_balls.add(fire_ball_2)
+            level.fire_balls.add(fire_ball_3)
+            level.fire_balls.add(fire_ball_4)
+            level.fire_balls.add(fire_ball_5)
+            level.fire_balls.add(fire_ball_6)
+            self.fire_ball_counter += 1
+
+
+        else:
+            self.fire_ball_counter = 1
+            fire_ball_1 = Fire_balls(self.rect.x, self.rect.y, -4, 0)
+            fire_ball_2 = Fire_balls(self.rect.x, self.rect.y, 0, 4)
+            fire_ball_3 = Fire_balls(self.rect.x, self.rect.y, 4, 0)
+            level.fire_balls.add(fire_ball_1)
+            level.fire_balls.add(fire_ball_2)
+            level.fire_balls.add(fire_ball_3)
+         
+            
+
+    def update(self, x_shift, level):
         self.rect.x += x_shift
         self.move_counter += 1
+        if Question_NonEvent.get_input == True:
+            self.health -= 1
+        else:
+            level.health -= 1
+            level.display_surface.blit(level.font.render(str(level).hearts), True, (0, 0, 0)), (32, 48)
         if abs(self.move_counter) > 50:  # absolute value so it stays positive
             self.move_direction *= -1  # go right
             self.move_counter *= -1  # go left
+
+        self.make_fire_balls(level)

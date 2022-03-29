@@ -16,7 +16,7 @@ boss_room = [
 'B                           B',
 'B    P                      B',
 'B                           B',
-'B             E              B',
+'B             E             B',
 'B           XBXBX           B',
 'B                           B',
 'B    XX               BB    B',

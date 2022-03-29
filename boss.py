@@ -20,6 +20,7 @@ class Boss(pygame.sprite.Sprite):
         self.fire_ball_counter = 1
         self.image.blit(self.image, (x, y))
         self.rect = self.image.get_rect(center=pos)
+        self.health = 5
 
     def move(self):
         if self.vel > 0:
@@ -80,6 +81,11 @@ class Boss(pygame.sprite.Sprite):
     def update(self, x_shift, level):
         self.rect.x += x_shift
         self.move_counter += 1
+        if Question_NonEvent.get_input == True:
+            self.health -= 1
+        else:
+            level.health -= 1
+            level.display_surface.blit(level.font.render(str(level).hearts), True, (0, 0, 0)), (32, 48)
         if abs(self.move_counter) > 50:  # absolute value so it stays positive
             self.move_direction *= -1  # go right
             self.move_counter *= -1  # go left

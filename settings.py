@@ -11,6 +11,19 @@ level_map = [
 ' P  XXXX   XXXXXX  XX  XXXXXXXXXXXXXXXX   XXXXXXXXX   XXXXXXXXXX O X XX XXXXX     XX       XX      XX         XXXXXXXX   ',                                                                     
 'XXXXXXXX   XXXXXX  XX  XXXXXXXXXXXXXXXX   XXXXXXXXx   XXXXXXXXXXXXXX XX XXXXX                      XXXXXXXXXXXXXXXXXXX   ',]
         
+boss_room = [
+'B                            B'
+'B                            B'
+'B                            B'
+'B                            B'
+'B           XXXX             B'
+'B                            B'
+'B     XXX            BBB     B'
+'B                            B'
+'BBXB      BXXXBBXXB       BBBB'
+'BXXXXXXXXXXXXXXXXXXXXXXXXXXXXB'
+'BXXXXXXXXXXXXXXXXXXXXXXXXXXXXB']
+
 tile_size = 64
 screen_width = 1200
 screen_height = len(level_map) * tile_size

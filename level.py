@@ -41,7 +41,7 @@ class Level:
         #             tile = Tile((x,y), tile_size, "assets/graphics/bookpiles.png")
         #             self.tiles.add(tile)
 
-        
+
         # desk_map = []
         # with open(file_path_desk) as map:
         #     level = reader(map, delimiter = ',')
@@ -79,7 +79,7 @@ class Level:
                     tile = Tile((x,y), tile_size, "assets/graphics/desk1.png")
                     self.tiles.add(tile)
 
-            
+
     def scrol_x(self):
         player = self.player.sprite
         player_x = player.rect.centerx
@@ -96,7 +96,7 @@ class Level:
             player.speed = 8
 
     def horizonal_movment_collision(self):
-        
+
         player = self.player.sprite
         player.rect.x += player.direction.x * player.speed
 
@@ -164,10 +164,10 @@ class Level:
 
         self.power_ups.update(self.world_shift)
         self.power_ups.draw(self.display_surface)
-        
+
         self.text_box.draw(self.display_surface)
 
         for i in self.question:
             i.update(self, self.player.sprite)
 
-        
+

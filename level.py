@@ -170,6 +170,20 @@ class Level:
                 text_box = question.create_text_box()
                 self.text_box.add(text_box)
 
+    def shoot_fire_balls(self):
+        fire_balls = []
+
+        for fire_ball in fire_balls:
+            if fire_ball.x < 500 and fire_ball.x > 0:
+                fire_ball.x += fire_ball.speed  # Moves the fireball by its vel
+        else:
+            # remove the fireball if it is off the screen
+            fire_balls.pop(fire_balls.index(fire_ball))
+
+        # draw fireballs
+        for fire_ball in fire_balls:
+            fire_ball.draw(self.display_surface)
+
 
     def run(self):
         self.tiles.update(self.world_shift)
@@ -186,6 +200,7 @@ class Level:
         self.power_ups.draw(self.display_surface)
         self.boss.draw(self.display_surface)
         self.text_box.draw(self.display_surface)
+
 
         for i in self.question:
             i.update(self, self.player.sprite)

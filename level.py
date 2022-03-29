@@ -119,6 +119,11 @@ class Level:
                 text_box = question.create_text_box()
                 self.text_box.add(text_box)
 
+        for sprite in self.fire_balls.sprites():
+            if sprite.rect.colliderect(player.rect):
+                self.hearts -= 1
+                pygame.sprite.Sprite.kill(sprite)
+
         if player.on_left and (player.rect.left < self.current_x or player.direction.x >= 0):
             player.on_left = False
         if player.on_right and (player.rect.right > self.current_x or player.direction.x <= 0):
@@ -159,19 +164,10 @@ class Level:
                 text_box = question.create_text_box()
                 self.text_box.add(text_box)
 
-    def shoot_fire_balls(self):
-        fire_balls = []
-
-        for fire_ball in fire_balls:
-            if fire_ball.x < 500 and fire_ball.x > 0:
-                fire_ball.x += fire_ball.speed  # Moves the fireball by its vel
-        else:
-            # remove the fireball if it is off the screen
-            fire_balls.pop(fire_balls.index(fire_ball))
-
-        # draw fireballs
-        for fire_ball in fire_balls:
-            fire_ball.draw(self.display_surface)
+        for sprite in self.fire_balls.sprites():
+            if sprite.rect.colliderect(player.rect):
+                self.hearts -= 1
+                pygame.sprite.Sprite.kill(sprite)
 
 
     def run(self):
@@ -188,8 +184,10 @@ class Level:
         self.power_ups.update(self.world_shift)
         self.power_ups.draw(self.display_surface)
         self.boss.draw(self.display_surface)
-        self.boss.update(self.world_shift)
+        self.boss.update(self.world_shift, self)
         self.text_box.draw(self.display_surface)
+        self.fire_balls.draw(self.display_surface)
+        self.fire_balls.update(self.world_shift)
 
         self.teleport.update(self.world_shift)
         self.teleport.draw(self.display_surface)

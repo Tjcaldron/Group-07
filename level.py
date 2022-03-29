@@ -23,7 +23,7 @@ class Level:
         self.power_ups = pygame.sprite.Group()
         self.text_box = pygame.sprite.GroupSingle()
         self.question = []
-        # self.boss = pygame.sprite.GroupSingle()
+        self.boss = pygame.sprite.GroupSingle()
         # self.fire_balls = pygame.sprite.GroupSingle()
         # file_path_books = "assets/maps/maps/prototype map_books.csv"
         # file_path_desk = "assets/maps/maps/prototype map_desk.csv"
@@ -170,7 +170,7 @@ class Level:
 
         self.power_ups.update(self.world_shift)
         self.power_ups.draw(self.display_surface)
-
+        self.boss.draw(self.display_surface)
         self.text_box.draw(self.display_surface)
 
         for i in self.question:

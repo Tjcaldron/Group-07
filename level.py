@@ -2,7 +2,8 @@ import enum
 from typing import Text
 import pygame
 from csv import reader
-from power_up import Power_Up, Teleport
+from power_up import Power_Up
+from teleport import Teleport
 from tiles import Tile
 from settings import tile_size, screen_width, screen_height
 from player import Player

@@ -125,10 +125,7 @@ class Question_NonEvent:
 
 class Question_Boss:
 	def __init__(self, level, player):
-		(self.question, self.answers, self.answer) = self.pull_question()
-		self.function_right = right
-		self.function_wrong = wrong
-
+		self.get_and_stop_movement(player)
 
 	def get_and_stop_movement(self, player):
 		player.input = False
@@ -152,13 +149,13 @@ class Question_Boss:
 		box = Text_Box((width_eighth, height_tenth * 1), (width_eighth * 6, height_tenth * 3), "Go to BOSS Room?", "1. Yes- 2. Oh Yeah!-3. Absolutely!")
 		return box
 
-	def update(self, player, level):
-		if self.get_input(self):
+	def update(self, level, player):
+		if self.get_input():
 			level.tiles.empty()
 			level.player.empty()
 			level.power_ups.empty()
 			level.text_box.empty()
-			level.questions.clear()
+			level.question.clear()
 			level.teleport.empty()
 
 			level.setup_level(boss_room)

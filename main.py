@@ -1,6 +1,5 @@
 import pygame, sys
 from settings import *
-from level import hearts
 from level import Level
 from sound import Sound
 

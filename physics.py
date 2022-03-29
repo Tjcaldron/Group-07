@@ -1,3 +1,6 @@
+'''
+Garbage class ignore this
+'''
 from cmath import rect
 # Sound & Music PyGame Class
 from pygame import mixer

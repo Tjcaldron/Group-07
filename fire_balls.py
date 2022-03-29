@@ -7,10 +7,11 @@ from support import import_folder
 class Fire_balls(pygame.sprite.Sprite):
     def __init__(self, x, y, dir_x, dir_y):
         super().__init__()
+        self.image = pygame.image.load('assets/graphics/fire.png')
         self.x = x
         self.y = y
-        self.radius = 100
-        self.color = "red"
+        # self.radius = 100
+        # self.color = "red"
         self.image.blit(self.image, (x, y))
         self.rect = self.image.get_rect(center=(x, y))
         self.speed = (dir_x, dir_y)

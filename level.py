@@ -2,7 +2,7 @@ import enum
 from typing import Text
 import pygame
 from csv import reader
-from power_up import Power_Up
+from power_up import Power_Up, Teleport
 from tiles import Tile
 from settings import tile_size, screen_width, screen_height
 from player import Player
@@ -90,6 +90,11 @@ class Level:
                     y = row_index * tile_size
                     boss = Boss((x, y))
                     self.boss.add(boss)
+                if cell == 'T':
+                    x = col_index * tile_size
+                    y = row_index * tile_size
+                    power_up = Teleport((x,y), tile_size)
+                    
 
 
     def scrol_x(self):

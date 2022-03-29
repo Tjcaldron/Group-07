@@ -12,17 +12,17 @@ level_map = [
 'XXXXXXXX   XXBBXX  XX  XXXXXXXXXXXXXXXX   XXXXXXXXx   XXXXXXXXXBBBBB XX XXXXX                      XXXXXXXXXXXXXXXXXXX   ',]
         
 boss_room = [
-'B                            B',
-'B    P                       B',
-'B            E               B',
-'B                            B',
-'B           XXXX             B',
-'B                            B',
-'B     XXX            BBB     B',
-'B                            B',
-'BBXB      BXXXBBXXB       BBBB',
-'BXXXXXXXXXXXXXXXXXXXXXXXXXXXXB',
-'BXXXXXXXXXXXXXXXXXXXXXXXXXXXXB']
+'B                           B',
+'B                           B',
+'B    P                      B',
+'B            E              B',
+'B                           B',
+'B                           B',
+'B           XXXXX           B',
+'B     XXX            BBB    B',
+'B                           B',
+'BBXB      BXXXBBXXB      BBBB',
+'BXXXXXXXXXXXXXXXXXXXXXXXXXXXB']
 
 tile_size = 64
 screen_width = 1200

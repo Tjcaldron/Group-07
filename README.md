@@ -7,7 +7,7 @@
 # Development Environment
 
 Visual Studio Code
-Python 
+
 
 {Describe the programming language that you used and any libraries.}
 

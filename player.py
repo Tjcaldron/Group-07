@@ -3,6 +3,8 @@ from sound import Sound
 from numpy import character
 import pygame
 from support import import_folder
+s = Sound()
+
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos):
         super().__init__()
@@ -64,11 +66,9 @@ class Player(pygame.sprite.Sprite):
 
     def get_input(self):
         keys = pygame.key.get_pressed()
-
         if keys[pygame.K_RIGHT]:
             self.direction.x = 1
             self.facing_right = True
-            #jump.play() -- add sound Class call here ---Alma 
         elif keys[pygame.K_LEFT]:
             self.direction.x = -1
             self.facing_right = False
@@ -94,6 +94,8 @@ class Player(pygame.sprite.Sprite):
     
     def jump(self):
         self.direction.y = self.jump_speed
+        # Call Jump sound here:
+        s.play_jump_Sound()
 
     def update(self):
         if self.input:

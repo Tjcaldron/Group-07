@@ -1,26 +1,28 @@
-# from marshal import load
 import pygame
-from pygame import mixer
+"""
+Collision playlist methods:
+
+Here any collision sound file will be loaded and have its own method
+to be called in external files that require sound interaction with 
+Sprints and blocks.
+"""
 
 class Sound():
     def __init__(self):
         pygame.mixer.init()
-        self.music = pygame.mixer.Sound("sound/background.wav")
         self.jump = pygame.mixer.Sound("sound\Jump.wav")
         self.run = pygame.mixer.Sound("sound\Run.wav")
-        # self.stop = pygame.mixer.Sound("sound\Stop.wav")
-        # self.fall = mixer.load.Sound("sound\Fall.wav") --- 1st import load statement for init method
+        self.stop = pygame.mixer.Sound("sound\Stop.wav")
+        
+    def play_jump_Sound(self):
+        self.jump.play()
+        
+    def play_run_Sound(self):
+        self.run.play()
+                
+    def play_stop_Sound(self):
+        self.stop.play()
         
 
-    def play_music(self):
-        
-        self.music.play(-1)
-        self.jump.play()
-        self.run.play()
-        
-        # mixer.music.play(-1) --- play background infinite -- how to impliment.
-        
-        s = Sound()
-        
         
     

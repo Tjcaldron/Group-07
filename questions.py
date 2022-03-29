@@ -3,7 +3,7 @@ from player import Player
 from text_box import Text_Box
 import json
 import random
-from settings import screen_width, screen_height
+from settings import screen_width, screen_height, boss_room
 
 class Quesion_Event:
 	def __init__(self, level, player, right, wrong):
@@ -124,7 +124,7 @@ class Question_NonEvent:
 			level.question.clear()
 
 class Question_Boss:
-	def __init__(self, level, player, right, wrong):
+	def __init__(self, level, player):
 		(self.question, self.answers, self.answer) = self.pull_question()
 		self.function_right = right
 		self.function_wrong = wrong
@@ -153,4 +153,13 @@ class Question_Boss:
 		return box
 
 	def update(self, player, level):
-		print
+		if self.get_input(self):
+			level.tiles.empty()
+			level.player.empty()
+			level.power_ups.empty()
+			level.text_box.empty()
+			level.questions.clear()
+			level.teleport.empty()
+
+			level.setup_level(boss_room)
+			

@@ -146,7 +146,7 @@ class Question_Boss:
 		width_eighth = screen_width / 8
 		height_tenth = screen_height / 10
 
-		box = Text_Box((width_eighth, height_tenth * 1), (width_eighth * 6, height_tenth * 3), "Go to BOSS Room?", "1. Yes- 2. Oh Yeah!-3. Absolutely!")
+		box = Text_Box((width_eighth, height_tenth * 1), (width_eighth * 6, height_tenth * 3), "Go to BOSS Room?", "1. Oh Yeah!- 2. Yes-3. Absolutely!")
 		return box
 
 	def update(self, level, player):

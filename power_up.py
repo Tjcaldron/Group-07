@@ -21,7 +21,7 @@ class Power_Up(pygame.sprite.Sprite):
         level.hearts -= 1
         level.display_surface.blit(level.font.render(str(level.hearts), True, (0, 0, 0)), (32, 48))
 
-class Teleport(Power_Up):
+class Teleport(pygame.sprite.Sprite):
     def __inti__(self,pos,size):
         super().__init__()
         self.image = pygame.image.load('assetsgraphics/erasersprite.png')
@@ -29,3 +29,6 @@ class Teleport(Power_Up):
         y = (size)
         self.image.blit(self.image, (x,y))
         self.rect = self.image.get_rect(topleft = pos)
+
+    def update(self,x_shift):
+        self.rect.x += x_shift

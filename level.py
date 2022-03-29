@@ -16,12 +16,14 @@ class Level:
         self.setup_level(level_data)
         self.world_shift = 0
         self.current_x = 0
-
-    def lives(self):
+        self.hearts = 3
         self.font = pygame.font.SysFont('Consolas', 30)
         self.color = (255,255,0)
-        self.rect1 = pygame.draw.rect(self.display_surface, self.color, pygame.Rect(30, 30, 60, 60))
-        self.rect = self.display_surface.blit(self.font.render(str(self.hearts), True, (0, 0, 0)), (32, 48))
+
+
+    def lives(self):
+        rect1 = pygame.draw.rect(self.display_surface, self.color, pygame.Rect(30, 30, 60, 60))
+        rect = self.display_surface.blit(self.font.render(str(self.hearts), True, (0, 0, 0)), (32, 48))
 
     def setup_level(self,layout):
         self.tiles = pygame.sprite.Group()
@@ -90,10 +92,10 @@ class Level:
                     y = row_index * tile_size
                     boss = Boss((x, y))
                     self.boss.add(boss)
-                if cell == 'T':
-                    x = col_index * tile_size
-                    y = row_index * tile_size
-                    power_up = Teleport((x,y), tile_size)
+                # if cell == 'T':
+                #     x = col_index * tile_size
+                #     y = row_index * tile_size
+                #     power_up = Teleport((x,y), tile_size)
 
 
 
@@ -179,6 +181,7 @@ class Level:
         self.player.draw(self.display_surface)
         self.scrol_x()
 
+        self.lives()
         self.power_ups.update(self.world_shift)
         self.power_ups.draw(self.display_surface)
         self.boss.draw(self.display_surface)

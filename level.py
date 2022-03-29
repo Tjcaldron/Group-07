@@ -1,10 +1,15 @@
+import enum
+from typing import Text
 import pygame
+from csv import reader
 from power_up import Power_Up
+from teleport import Teleport
 from tiles import Tile
-from settings import tile_size, screen_width
+from settings import tile_size, screen_width, screen_height
 from player import Player
 from text_box import Text_Box
-from questions import Quesion_Event
+from questions import Quesion_Event, Question_Boss
+from boss import Boss
 
 class Level:
     def __init__(self,level_data, surface):
@@ -12,6 +17,15 @@ class Level:
         self.setup_level(level_data)
         self.world_shift = 0
         self.current_x = 0
+        self.hearts = 3
+        self.font = pygame.font.SysFont('Consolas', 30)
+        self.color = (255,255,0)
+
+
+
+    def lives(self):
+        rect1 = pygame.draw.rect(self.display_surface, self.color, pygame.Rect(30, 30, 60, 60))
+        rect = self.display_surface.blit(self.font.render(str(self.hearts), True, (0, 0, 0)), (32, 48))
 
     def setup_level(self,layout):
         self.tiles = pygame.sprite.Group()
@@ -19,14 +33,16 @@ class Level:
         self.power_ups = pygame.sprite.Group()
         self.text_box = pygame.sprite.GroupSingle()
         self.question = []
-        # self.boss = pygame.sprite.GroupSingle()
-        # self.fire_balls = pygame.sprite.GroupSingle()
+        self.boss = pygame.sprite.GroupSingle()
+        self.fire_balls = pygame.sprite.Group()
+        self.teleport = pygame.sprite.Group()
+
         for row_index, row in enumerate(layout):
             for col_index, cell in enumerate(row):
                 if cell == 'X':
                     x = col_index * tile_size
                     y = row_index * tile_size
-                    tile = Tile((x,y), tile_size)
+                    tile = Tile((x,y), tile_size, "assets/graphics/books.png")
                     self.tiles.add(tile)
                 if cell == 'P':
                     x = col_index * tile_size
@@ -38,7 +54,24 @@ class Level:
                     y = row_index * tile_size
                     power_up = Power_Up((x,y), tile_size)
                     self.power_ups.add(power_up)
-            
+                if cell == 'B':
+                    x = col_index * tile_size
+                    y = row_index * tile_size
+                    tile = Tile((x,y), tile_size, "assets/graphics/desk1.png")
+                    self.tiles.add(tile)
+                if cell == 'E':
+                    x = col_index * tile_size
+                    y = row_index * tile_size
+                    boss = Boss((x, y))
+                    self.boss.add(boss)
+                if cell == 'T':
+                    x = col_index * tile_size
+                    y = row_index * tile_size
+                    teleport = Teleport((x,y), tile_size)
+                    self.teleport.add(teleport)
+
+
+
     def scrol_x(self):
         player = self.player.sprite
         player_x = player.rect.centerx
@@ -55,7 +88,7 @@ class Level:
             player.speed = 8
 
     def horizonal_movment_collision(self):
-        
+
         player = self.player.sprite
         player.rect.x += player.direction.x * player.speed
 
@@ -73,6 +106,14 @@ class Level:
         for sprite in self.power_ups.sprites():
             if sprite.rect.colliderect(player.rect):
                 question = Quesion_Event(self, player, sprite.right, sprite.wrong)
+                pygame.sprite.Sprite.kill(sprite)
+                self.question.append(question)
+                text_box = question.create_text_box()
+                self.text_box.add(text_box)
+
+        for sprite in self.teleport.sprites():
+            if sprite.rect.colliderect(player.rect):
+                question = Question_Boss(self, player)
                 pygame.sprite.Sprite.kill(sprite)
                 self.question.append(question)
                 text_box = question.create_text_box()
@@ -110,6 +151,28 @@ class Level:
                 text_box = question.create_text_box()
                 self.text_box.add(text_box)
 
+        for sprite in self.teleport.sprites():
+            if sprite.rect.colliderect(player.rect):
+                question = Question_Boss(self, player)
+                pygame.sprite.Sprite.kill(sprite)
+                self.question.append(question)
+                text_box = question.create_text_box()
+                self.text_box.add(text_box)
+
+    def shoot_fire_balls(self):
+        fire_balls = []
+
+        for fire_ball in fire_balls:
+            if fire_ball.x < 500 and fire_ball.x > 0:
+                fire_ball.x += fire_ball.speed  # Moves the fireball by its vel
+        else:
+            # remove the fireball if it is off the screen
+            fire_balls.pop(fire_balls.index(fire_ball))
+
+        # draw fireballs
+        for fire_ball in fire_balls:
+            fire_ball.draw(self.display_surface)
+
 
     def run(self):
         self.tiles.update(self.world_shift)
@@ -121,12 +184,18 @@ class Level:
         self.player.draw(self.display_surface)
         self.scrol_x()
 
+        self.lives()
         self.power_ups.update(self.world_shift)
         self.power_ups.draw(self.display_surface)
-        
+        self.boss.draw(self.display_surface)
+        self.boss.update(self.world_shift)
         self.text_box.draw(self.display_surface)
+
+        self.teleport.update(self.world_shift)
+        self.teleport.draw(self.display_surface)
+
 
         for i in self.question:
             i.update(self, self.player.sprite)
 
-        
+

@@ -19,6 +19,7 @@ class Level:
         self.hearts = 3
         self.font = pygame.font.SysFont('Consolas', 30)
         self.color = (255,255,0)
+        
 
 
     def lives(self):

@@ -14,9 +14,6 @@ class Fire_balls(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(topleft=(x, y))
         self.speed = (dir_x, dir_y)
         self.life = 300
-        size = self.image.get_size()
-        smaller_img = pygame.transform.scale(self.image, (int(size[0]/2), int(size[1]/2)))
-        self.image = smaller_img
 
     def update(self, x_shift):
         self.rect.x += self.speed[0] + x_shift

@@ -2,13 +2,15 @@ import enum
 from typing import Text
 import pygame
 from csv import reader
-from power_up import Power_Up, Teleport
+from power_up import Power_Up
+from teleport import Teleport
 from tiles import Tile
 from settings import tile_size, screen_width, screen_height
 from player import Player
 from text_box import Text_Box
-from questions import Quesion_Event
+from questions import Quesion_Event, Question_Boss
 from boss import Boss
+
 
 class Level:
     def __init__(self,level_data, surface):
@@ -34,37 +36,7 @@ class Level:
         self.question = []
         self.boss = pygame.sprite.GroupSingle()
         self.fire_balls = pygame.sprite.Group()
-        # file_path_books = "assets/maps/maps/prototype map_books.csv"
-        # file_path_desk = "assets/maps/maps/prototype map_desk.csv"
-
-        # book_map = []
-        # with open(file_path_books) as map:
-        #     level = reader(map, delimiter = ',')
-        #     for row in level:
-        #         book_map.append(list(row))
-
-        # for row_index, row in enumerate(book_map):
-        #     for col_index, val in enumerate(row):
-        #         if val == '0':
-        #             x = col_index * tile_size
-        #             y = row_index * tile_size
-        #             tile = Tile((x,y), tile_size, "assets/graphics/bookpiles.png")
-        #             self.tiles.add(tile)
-
-
-        # desk_map = []
-        # with open(file_path_desk) as map:
-        #     level = reader(map, delimiter = ',')
-        #     for row in level:
-        #         book_map.append(list(row))
-
-        # for row_index, row in enumerate(desk_map):
-        #     for col_index, val in enumerate(row):
-        #         if val == '0':
-        #             x = col_index * tile_size
-        #             y = row_index * tile_size
-        #             tile = Tile((0,0), tile_size, "assets/graphics/desk.png")
-        #             self.tiles.add(tile)
+        self.teleport = pygame.sprite.Group()
 
         for row_index, row in enumerate(layout):
             for col_index, cell in enumerate(row):
@@ -93,10 +65,12 @@ class Level:
                     y = row_index * tile_size
                     boss = Boss((x, y))
                     self.boss.add(boss)
-                # if cell == 'T':
-                #     x = col_index * tile_size
-                #     y = row_index * tile_size
-                #     power_up = Teleport((x,y), tile_size)
+                if cell == 'T':
+                    x = col_index * tile_size
+                    y = row_index * tile_size
+                    teleport = Teleport((x,y), tile_size)
+                    self.teleport.add(teleport)
+
 
 
 
@@ -139,6 +113,14 @@ class Level:
                 text_box = question.create_text_box()
                 self.text_box.add(text_box)
 
+        for sprite in self.teleport.sprites():
+            if sprite.rect.colliderect(player.rect):
+                question = Question_Boss(self, player)
+                pygame.sprite.Sprite.kill(sprite)
+                self.question.append(question)
+                text_box = question.create_text_box()
+                self.text_box.add(text_box)
+
         if player.on_left and (player.rect.left < self.current_x or player.direction.x >= 0):
             player.on_left = False
         if player.on_right and (player.rect.right > self.current_x or player.direction.x <= 0):
@@ -171,6 +153,14 @@ class Level:
                 text_box = question.create_text_box()
                 self.text_box.add(text_box)
 
+        for sprite in self.teleport.sprites():
+            if sprite.rect.colliderect(player.rect):
+                question = Question_Boss(self, player)
+                pygame.sprite.Sprite.kill(sprite)
+                self.question.append(question)
+                text_box = question.create_text_box()
+                self.text_box.add(text_box)
+                
     def shoot_fire_balls(self):
         fire_balls = []
 
@@ -202,6 +192,8 @@ class Level:
         self.boss.draw(self.display_surface)
         self.text_box.draw(self.display_surface)
 
+        self.teleport.update(self.world_shift)
+        self.teleport.draw(self.display_surface)
 
         for i in self.question:
             i.update(self, self.player.sprite)

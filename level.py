@@ -24,7 +24,7 @@ class Level:
         self.text_box = pygame.sprite.GroupSingle()
         self.question = []
         self.boss = pygame.sprite.GroupSingle()
-        # self.fire_balls = pygame.sprite.GroupSingle()
+        self.fire_balls = pygame.sprite.Group()
         # file_path_books = "assets/maps/maps/prototype map_books.csv"
         # file_path_desk = "assets/maps/maps/prototype map_desk.csv"
 
@@ -88,7 +88,7 @@ class Level:
                     x = col_index * tile_size
                     y = row_index * tile_size
                     power_up = Teleport((x,y), tile_size)
-                    
+
 
 
     def scrol_x(self):

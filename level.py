@@ -188,6 +188,7 @@ class Level:
         self.power_ups.update(self.world_shift)
         self.power_ups.draw(self.display_surface)
         self.boss.draw(self.display_surface)
+        self.boss.update(self.world_shift)
         self.text_box.draw(self.display_surface)
 
         self.teleport.update(self.world_shift)

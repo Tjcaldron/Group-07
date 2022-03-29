@@ -35,8 +35,8 @@ class Boss(pygame.sprite.Sprite):
                 self.x += self.vel
                 self.walkCount = 0
 
-    def update(self):
-        self.rect.x += self.move_direction
+    def update(self, x_shift):
+        self.rect.x += x_shift
         self.move_counter += 1
         if abs(self.move_counter) > 50:  # absolute value so it stays positive
             self.move_direction *= -1  # go right

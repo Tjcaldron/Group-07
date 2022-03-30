@@ -1,12 +1,14 @@
+import imp
 from matplotlib import animation
 from numpy import character
 import pygame
 from support import import_folder
 from fire_balls import Fire_balls
+from questions import Question_NonEvent
 
 
 class Boss(pygame.sprite.Sprite):
-    def __init__(self, pos):
+    def __init__(self, pos, level):
         super().__init__()
         # boss_files = ["scroll.png", "scroll2.png"]
         self.image = pygame.image.load('assets\graphics\scroll.png')
@@ -21,6 +23,13 @@ class Boss(pygame.sprite.Sprite):
         self.image.blit(self.image, (x, y))
         self.rect = self.image.get_rect(center=pos)
         self.health = 5
+        question = Question_NonEvent(level)
+        box = question.create_text_box()
+        level.question.append(question)
+        level.text_box.add(box)
+
+    def take_life(self):
+        self.health -= 1
 
     def move(self):
         if self.vel > 0:
@@ -81,11 +90,6 @@ class Boss(pygame.sprite.Sprite):
     def update(self, x_shift, level):
         self.rect.x += x_shift
         self.move_counter += 1
-        if Question_NonEvent.get_input == True:
-            self.health -= 1
-        else:
-            level.health -= 1
-            level.display_surface.blit(level.font.render(str(level).hearts), True, (0, 0, 0)), (32, 48)
         if abs(self.move_counter) > 50:  # absolute value so it stays positive
             self.move_direction *= -1  # go right
             self.move_counter *= -1  # go left

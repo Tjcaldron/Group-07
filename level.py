@@ -62,7 +62,7 @@ class Level:
                 if cell == 'E':
                     x = col_index * tile_size
                     y = row_index * tile_size
-                    boss = Boss((x, y))
+                    boss = Boss((x, y), self)
                     self.boss.add(boss)
                 if cell == 'T':
                     x = col_index * tile_size

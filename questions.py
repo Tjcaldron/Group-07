@@ -71,10 +71,8 @@ class Quesion_Event:
 			level.question.clear()
 
 class Question_NonEvent:
-	def __init__(self, level, player, right, wrong):
+	def __init__(self, level,):
 		(self.question, self.answers, self.answer) = self.pull_question()
-		self.function_right = right
-		self.function_wrong = wrong
 		
 		
 	def pull_question(self):
@@ -110,18 +108,26 @@ class Question_NonEvent:
 		width_eighth = screen_width / 8
 		height_tenth = screen_height / 10
 
-		box = Text_Box((width_eighth, height_tenth * 1), (width_eighth * 6, height_tenth * 3), self.question, self.answers)
+		box = Text_Box((width_eighth, 0), (width_eighth * 6, height_tenth * 3), self.question, self.answers)
 		return box
 
 	def update(self, level, player):
 		if self.get_input():
-			self.function_right(player, level)
+			level.boss._get_sprite().take_life()
 			level.text_box.empty()
 			level.question.clear()
+			question = Question_NonEvent(level)
+			box = question.create_text_box()
+			level.question.append(question)
+			level.text_box.add(box)
 		elif self.get_input() == False:
-			self.function_wrong(player, level)
+			level.hearts -= 1
 			level.text_box.empty()
 			level.question.clear()
+			question = Question_NonEvent(level)
+			box = question.create_text_box()
+			level.question.append(question)
+			level.text_box.add(box)
 
 class Question_Boss:
 	def __init__(self, level, player):

@@ -1,3 +1,5 @@
+<meta charset="UTF-8">
+
 # Overview
 
 Welcome to **"Mom, my homework is trying to kill me!"**. Where the Evil Math Scroll spits fire-balls to make you fail your Math assignments! Be agile when picking a question. Stay alive, avoid the fire balls, and always pick the right answer! Pick up hearts to gain more lives, and stay alive!
@@ -8,41 +10,63 @@ Welcome to **"Mom, my homework is trying to kill me!"**. Where the Evil Math Scr
 
 **PURPOSE:** To increase your math-problem skills speed and accuracy while having fun! Run the **main.py** file and have fun!
 
+
 [START PLAYING](/main.py)
+
+<style>
+body {
+  font-size: 20px;
+}
+</style>
+<body>
+
+<span style='font-size:100px;'>&#11088;</span>
 
 # Game Characters
 
 - **Sprite:** Meet, Lola! She is our main character and sprite. Help here solve her homework! Gain lives by catching the cute hearts!
-<!-- INSERT IMAGE HERE -->
+
+    ![Girl Sprite](/assetsgraphics/idle/Girl%20Final.png)
+
 - **Heart**: Meet,  Heart! Your life saver from The Evil Math Scroll!
-<!-- INSERT IMAGE HERE -->
+
+    ![Heart](/assetsgraphics/heart.png)
 
 - **Start Game Boss:** Meet, Mr. Eraser! He will teletransport you into Study Mode and help you pick a level at the beginning of the game!
-<!-- INSERT IMAGE HERE -->
+
+    ![Eraser](/assetsgraphics/erasersprite.png)
 
 - **Evil Boss:** Meet, Mr. Evil Math Scroll! He will throw fireballs at ya if you are not quick. Try solving math problems with fire balls being thrown at ya!
-<!-- INSERT IMAGE HERE -->
+
+    ![Evil Math Scroll](/assetsgraphics/scroll%20gif.gif)
 
 - **Fireball:** Meet, Fireball! Looks cute, but will definitley kill you!
-<!-- INSERT IMAGE HERE -->
+
+    ![Fireball](/assets/graphics/fire.png)
+
 
 
 # How to Play
 
 - **Jump:** The spacebar will help Student jump over obstacles. Look at her go!
-<!-- INSERT IMAGE HERE -->
+
+    ![JUMP](/assets/graphics/jumpingsprite.png)
 
 
 - **Run Left or Right:** Use your Left & Right arrow keys to run for your life and pick up hearts!
-<!-- INSERT IMAGE HERE -->
+
+    ![RUN](/assets/graphics/runningsprite1.png)
+
 
 
 - **Gain life:** Don't forget to run towards these to gain a life!
-<!-- INSERT IMAGE HERE -->
+
+    ![HEART](/assetsgraphics/heart.png)
 
 
 - **Lose a life:** Get hit by a fireball. That's how you lose a life. Or answer a question wrong!
-<!-- INSERT IMAGE HERE -->
+
+    ![FIREBALL](/assets/graphics/fire.png)
 
 
 - **Pick a Menu Option:** To pick a level, use the number keys or number pad on your device.
@@ -53,44 +77,52 @@ Welcome to **"Mom, my homework is trying to kill me!"**. Where the Evil Math Scr
 <!-- INSERT IMAGE HERE -->
 
 
-- **Desks:** Jump over them or run over them! Try not to fall!
-<!-- INSERT IMAGE HERE -->
+- **Desks & Books:** Jump over them or run over them! Try not to fall!
 
+    ![DESK](/assetsgraphics/bookpiles.png)
+    ![DESK](/assetsgraphics/bookpiles.png)
+    ![DESK](/assetsgraphics/bookpiles.png)
+    ![DESK](/assetsgraphics/bookpiles.png)
+    ![DESK](/assetsgraphics/bookpiles.png)
+    ![DESK](/assetsgraphics/bookpiles.png)
+    ![DESK](/assetsgraphics/bookpiles.png)
+    ![DESK](/assetsgraphics/bookpiles.png)
+    ![DESK](/assetsgraphics/bookpiles.png)
+    ![DESK](/assetsgraphics/bookpiles.png)
+    ![DESK](/assetsgraphics/desk.png)
+    ![DESK](/assetsgraphics/desk.png)
+    ![DESK](/assetsgraphics/desk.png)
+    ![DESK](/assetsgraphics/desk.png)
+    ![DESK](/assetsgraphics/desk.png)
+    ![DESK](/assetsgraphics/desk.png)
+    ![DESK](/assetsgraphics/desk.png)
+    ![DESK](/assetsgraphics/desk.png)
+    ![DESK](/assetsgraphics/desk.png)
+    ![DESK](/assetsgraphics/desk.png)
 
 # Development Environment
 
 - **Code Editor Code:** The game was developed using *Visual Studio Code*, but can be modified and implemented in other IDE's that support the latest version of Python Programming Language.
-<!-- INSERT IMAGE HERE -->
 
 - **Programming Language:** The game was developed using the latest version Python Programming Language.
-<!-- INSERT IMAGE HERE -->
-
 
 - **Libraries:** The game was developed using PyGame library, which works with other libraries that aid in the merging of the graphcis, sounds, and more.
-<!-- INSERT IMAGE HERE -->
-
 
 # Collaborators
 
 Special thank you to all the programmers that collaborated into making this game come to life while tackling unique tasks to the development of the game:
 
-- **Questions Generator Genius:** Mosiah Hazen
-<!-- INSERT IMAGE HERE -->
+- **Questions Generator Genius:** Mosiah Hazen<p>&#127918;&#128221;</p>
 
-- **Brought Bosses & Fire to life:** Krystianne Otis
-<!-- INSERT IMAGE HERE -->
+- **Brought Bosses & Fire to life:** Krystianne Otis<p>&#127918;&#128293;</p>
 
-- **Physics and Game movement genius:** Paul Powell
-<!-- INSERT IMAGE HERE -->
+- **Physics and Game movement genius:** Paul Powell<p>&#127918;&#127758;</p>
 
-- **Sprites & Bosses Graphic Artist:** Jane Orr
-<!-- INSERT IMAGE HERE -->
+- **Graphic Artist:** Jane Orr<p>&#127918;&#127912;</p>
 
-- **Points and Lives Keeper:** Tyler Caldron
-<!-- INSERT IMAGE HERE -->
+- **Points and Lives Keeper:** Tyler Caldron<p>&#127918;&#127919;</p>
 
-- **Sound Designer:** Alma Camarillo
-<!-- INSERT IMAGE HERE -->
+- **Sound Designer:** Alma Camarillo<p>&#127918;&#127926;</p>
 
 
 # Useful Websites

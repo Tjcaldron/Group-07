@@ -4,7 +4,9 @@ from numpy import character
 import pygame
 from support import import_folder
 s = Sound()
-
+"""
+Sprite player speed, gravity, direction and jump defined:
+"""
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos):
         super().__init__()

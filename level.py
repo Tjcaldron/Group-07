@@ -11,6 +11,9 @@ from text_box import Text_Box
 from questions import Quesion_Event, Question_Boss
 from boss import Boss
 
+"""
+This Class merges outside classes so methods can inherit from them and generate our MATH level:
+"""
 class Level:
     def __init__(self,level_data, surface):
         self.display_surface = surface
@@ -22,11 +25,12 @@ class Level:
         self.color = (255,255,0)
 
 
-
+    # Lives counter display box:
     def lives(self):
         rect1 = pygame.draw.rect(self.display_surface, self.color, pygame.Rect(30, 30, 60, 60))
         rect = self.display_surface.blit(self.font.render(str(self.hearts), True, (0, 0, 0)), (32, 48))
 
+    # Setup Level with Sprites and Bosses:
     def setup_level(self,layout):
         self.tiles = pygame.sprite.Group()
         self.player = pygame.sprite.GroupSingle()
@@ -71,7 +75,7 @@ class Level:
                     self.teleport.add(teleport)
 
 
-
+    # Screen movement as Sprite Navigates to a specific area.
     def scrol_x(self):
         player = self.player.sprite
         player_x = player.rect.centerx
@@ -87,6 +91,7 @@ class Level:
             self.world_shift = 0
             player.speed = 8
 
+    # Collision with Questions:
     def horizonal_movment_collision(self):
 
         player = self.player.sprite
@@ -129,6 +134,7 @@ class Level:
         if player.on_right and (player.rect.right > self.current_x or player.direction.x <= 0):
             player.on_right = False
 
+    # Collision with Questions:
     def virtical_movment_collision(self):
         player = self.player.sprite
         player.apply_gravity()
@@ -169,7 +175,7 @@ class Level:
                 self.hearts -= 1
                 pygame.sprite.Sprite.kill(sprite)
 
-
+    # Create RUN method
     def run(self):
         self.tiles.update(self.world_shift)
         self.tiles.draw(self.display_surface)

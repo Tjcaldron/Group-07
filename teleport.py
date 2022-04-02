@@ -1,5 +1,11 @@
 import pygame
 
+"""
+Eraser will teleport Sprite to different levels
+
+
+"""
+
 class Teleport(pygame.sprite.Sprite):
     def __init__(self, pos, size):
         super().__init__()

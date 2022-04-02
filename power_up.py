@@ -1,5 +1,9 @@
 import pygame
 
+"""
+
+Generate Powerups: Heart gives Sprite more lives
+"""
 class Power_Up(pygame.sprite.Sprite):
     def __init__(self, pos, size):
         super().__init__()

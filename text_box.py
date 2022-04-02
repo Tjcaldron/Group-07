@@ -1,5 +1,13 @@
 import pygame
 
+
+"""
+
+
+Text box in which questions and answers will be generated and displayed:
+
+
+"""
 class Text_Box(pygame.sprite.Sprite):
 	def __init__(self,pos,size,question,answers):
 		super().__init__()

@@ -1,7 +1,10 @@
 from os import walk
 import pygame
 
+"""
+Creates a pathway to call our files into game
 
+"""
 def import_folder(path):
     surface_list = []
     

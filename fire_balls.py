@@ -2,7 +2,10 @@ from matplotlib import animation
 from numpy import character
 import pygame
 from support import import_folder
+"""
 
+This Class is in charge of creating the Fireballs thrown by the boss. 
+"""
 
 class Fire_balls(pygame.sprite.Sprite):
     def __init__(self, x, y, dir_x, dir_y):

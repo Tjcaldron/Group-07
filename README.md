@@ -13,13 +13,6 @@ Welcome to **"Mom, my homework is trying to kill me!"**. Where the Evil Math Scr
 
 [START PLAYING](/main.py)
 
-<style>
-body {
-  font-size: 20px;
-}
-</style>
-<body>
-
 <span style='font-size:100px;'>&#11088;</span>
 
 # Game Characters

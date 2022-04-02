@@ -129,8 +129,14 @@ Special thank you to all the programmers that collaborated into making this game
 
 Creating video games can be one of the most fun challenges you can experience, either solo or with great programmers. Whatever your work environment will look like, here are some useful websites and videos we thought helpful to our journey!
 
-- [Web Site Name](http://url.link.goes.here)
-- [Web Site Name](http://url.link.goes.here)
+- [Create a Platform in PyGame](http://url.link.goes.herehttps://youtu.be/YWN8GcmJ-jA)
+- [PyGame Docs](https://www.pygame.org/docs/)
+- [PyGame Sounds](https://pythonprogramming.net/adding-sounds-music-pygame/)
+- [Stack Overflow](https://stackoverflow.com/)
+- [BandLab](https://www.bandlab.com/?lang=en)
+- [PyGame Examples](http://www.pygame.org/docs/ref/examples.html)
+- [Special thanks to W3Schools Unicode Emojis](https://www.w3schools.com/charsets/ref_emoji.asp)
+
 
 # Future Work
 
